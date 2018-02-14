@@ -1,0 +1,66 @@
+1.
++----------------+             +---------------+
+|   Film         |             |   Viewer      |
+| id    :integer |             | id   :integer |
+| title :string  |             | name :string  |
+| year  :year    |             | age  :integer |
++----------------+             +---------------+
+              \ 1                 / 1
+               \                 /
+                \ many          / many
+                 +-------------+
+                 |   Tracker   |
+                 | film_id     |
+                 | viewer_id   |
+                 +-------------+
+
+
+2.
++---------------+              +---------------+
+|   Worker      |              |   Shift       |
+| id   :integer |              | id   :integer |
+| name :string  |              | day  :integer |
+| wage :float   |              | time :time    |
++---------------+              +---------------+
+             \ 1                  / 1
+              \                  /
+               \ many           / many
+                +--------------+
+                |   Schedule   |
+                | worker_id    |
+                | shift_id     |
+                +--------------+
+
+
+3.
++----------------+
+|   Chapter      |
+| id    :integer |
+| title :string  |
+| book_id        |
++-------+--------+
+        | many
+        |
+        | 1
++-------+--------+          +-------------+          +---------------+
+|   Book         |          |   Tracker   |          |   Reader      |
+| id    :integer | 1   many | book_id     | many   1 | id   :integer |
+| title :string  +----------+ reader_id   +----------+ name :string  |
+| year  :year    |          +-------------+          | age  :integer |
++-------+--------+                                   +---------------+
+        | 1
+        |
+        | many
++-------+------------+
+|   Author of Book   |
+| book_id            |
+| author_id          |
++-------+------------+
+        | many
+        |
+        | 1
++---------------+
+|   Author      |
+| id   :integer |
+| name :string  |
++---------------+
